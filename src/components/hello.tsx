@@ -1,22 +1,19 @@
-import React, {Dispatch} from 'react';
-import {connect} from 'react-redux';
-import {State} from '../store/State';
-import {DeleteFruitAction} from '../store/actions/actionTypes';
-import {deleteFruitAction} from '../store/actions';
+import React from 'react';
 
-type StateProps = {
+export type HelloStateProps = {
+  title: string,
   fruits: string[]
 }
 
-type DispatchProps = {
+export type HelloDispatchProps = {
   deleteFruit: (fruitName: string) => void
 }
 
-type Props = StateProps & DispatchProps;
+type Props = HelloStateProps & HelloDispatchProps;
 
-function Hello({fruits, deleteFruit}: Props) {
+export default function Hello({title, fruits, deleteFruit}: Props) {
   return <div>
-    <h1>Hello, I like:</h1>
+    <h1>{title}</h1>
     <ul>
       {
         fruits.map(name => <li key={name}>
@@ -27,13 +24,3 @@ function Hello({fruits, deleteFruit}: Props) {
     </ul>
   </div>
 }
-
-const mapStateToProps = (state: State): StateProps => ({
-  fruits: state.fruits
-})
-
-const mapDispatchToProps = (dispatch: Dispatch<DeleteFruitAction>): DispatchProps => ({
-  deleteFruit: (name) => dispatch(deleteFruitAction(name))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Hello);

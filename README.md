@@ -1,5 +1,5 @@
-TypeScript React Redux Demo
-===========================
+TypeScript React Redux Create Component Dynamically Demo
+=========================================================
 
 ```
 npm install
